@@ -98,7 +98,6 @@ class PiecewiseFunction(BuiltinFunction):
             1/2*y^2
         """
         BuiltinFunction.__init__(self, "piecewise",
-                                 latex_name="piecewise",
                                  conversions=dict(), nargs=2)
 
     def __call__(self, function_pieces, **kwds):
@@ -185,6 +184,22 @@ class PiecewiseFunction(BuiltinFunction):
         for domain, func in parameters:
             args.append('{0}|-->{1} on {2}'.format(str(variable), str(func), str(domain)))
         s += ', '.join(args) + '; {0})'.format(str(variable))
+        return s
+
+    def _print_latex_(self, parameters, variable):
+        """
+        Custom ``_print_latex_`` method.
+
+        EXAMPLES::
+
+            sage: p = piecewise([((-2, 0), -x), ((0, 4), x)], var=x)
+            sage: latex(p)
+            \operatorname{piecewise}(x) = \begin{cases}x & x\in (-2, 0)\\ x & x\in (0, 4)\\ \end{cases}
+        """
+        s = r"\operatorname{{piecewise}}({0}) = \begin{{cases}}".format(str(variable))
+        for domain, func in parameters:
+            s += r"{0} & {1}\in {2}\\ ".format(str(func), str(variable), str(domain))
+        s += r"\end{cases}"
         return s
 
     def _subs_(self, subs_map, options, parameters, x):

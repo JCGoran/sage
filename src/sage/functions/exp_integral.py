@@ -157,7 +157,7 @@ class Function_exp_integral_e(BuiltinFunction):
 
         """
         BuiltinFunction.__init__(self, "exp_integral_e", nargs=2,
-                                 latex_name=r'exp_integral_e',
+                                 latex_name=r'\operatorname{Ei}',
                                  conversions=dict(maxima='expintegral_e',
                                                   sympy='expint'))
 
@@ -310,7 +310,7 @@ class Function_exp_integral_e1(BuiltinFunction):
 
         """
         BuiltinFunction.__init__(self, "exp_integral_e1", nargs=1,
-                                 latex_name=r'exp_integral_e1',
+                                 latex_name=r'\operatorname{E_1}',
                                  conversions=dict(maxima='expintegral_e1',
                                                   sympy='E1'))
 
@@ -417,7 +417,7 @@ class Function_log_integral(BuiltinFunction):
 
         """
         BuiltinFunction.__init__(self, "log_integral", nargs=1,
-                                 latex_name=r'log_integral',
+                                 latex_name=r'\operatorname{li}',
                                  conversions=dict(maxima='expintegral_li',
                                                   sympy='li',
                                                   fricas='li'))
@@ -604,7 +604,7 @@ class Function_log_integral_offset(BuiltinFunction):
 
         """
         BuiltinFunction.__init__(self, "log_integral_offset", nargs=1,
-                                 latex_name=r'log_integral_offset',
+                                 latex_name=r'\operatorname{Li}',
                                  conversions=dict(sympy='Li'))
 
     def _eval_(self,z):
